@@ -10,6 +10,11 @@
 		4212318421AA46AE005AF950 /* NearestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318321AA46AE005AF950 /* NearestTableViewController.swift */; };
 		4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318521AA46DB005AF950 /* StationsTableViewController.swift */; };
 		4212318821AA46F7005AF950 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */; };
+		42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473021AB6D370030FD29 /* PersistenceManager.swift */; };
+		42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */; };
+		42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */; };
+		42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473621AB6D920030FD29 /* WMATAResponse.swift */; };
+		42AC473921AB6DAC0030FD29 /* YelpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473821AB6DAC0030FD29 /* YelpResponse.swift */; };
 		42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7D14219E438D00EB72CE /* AppDelegate.swift */; };
 		42AD7D17219E438D00EB72CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7D16219E438D00EB72CE /* ViewController.swift */; };
 		42AD7D1A219E438D00EB72CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D18219E438D00EB72CE /* Main.storyboard */; };
@@ -21,6 +26,11 @@
 		4212318321AA46AE005AF950 /* NearestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestTableViewController.swift; sourceTree = "<group>"; };
 		4212318521AA46DB005AF950 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
 		4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		42AC473021AB6D370030FD29 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAAPIManager.swift; sourceTree = "<group>"; };
+		42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIManager.swift; sourceTree = "<group>"; };
+		42AC473621AB6D920030FD29 /* WMATAResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAResponse.swift; sourceTree = "<group>"; };
+		42AC473821AB6DAC0030FD29 /* YelpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResponse.swift; sourceTree = "<group>"; };
 		42AD7D11219E438D00EB72CE /* MetroExplorerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroExplorerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AD7D14219E438D00EB72CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42AD7D16219E438D00EB72CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,11 +51,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4212318221AA466D005AF950 /* New Group */ = {
+		4212318221AA466D005AF950 /* view controller */ = {
 			isa = PBXGroup;
 			children = (
+				42AD7D16219E438D00EB72CE /* ViewController.swift */,
+				4212318321AA46AE005AF950 /* NearestTableViewController.swift */,
+				4212318521AA46DB005AF950 /* StationsTableViewController.swift */,
+				4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */,
 			);
-			path = "New Group";
+			path = "view controller";
+			sourceTree = "<group>";
+		};
+		42AC472E21AB6CFB0030FD29 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				42AC473021AB6D370030FD29 /* PersistenceManager.swift */,
+				42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */,
+				42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */,
+			);
+			path = manager;
+			sourceTree = "<group>";
+		};
+		42AC472F21AB6D0D0030FD29 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				42AC473621AB6D920030FD29 /* WMATAResponse.swift */,
+				42AC473821AB6DAC0030FD29 /* YelpResponse.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		42AD7D08219E438D00EB72CE = {
@@ -67,16 +100,14 @@
 		42AD7D13219E438D00EB72CE /* MetroExplorerApp */ = {
 			isa = PBXGroup;
 			children = (
-				4212318221AA466D005AF950 /* New Group */,
+				42AC472F21AB6D0D0030FD29 /* models */,
+				42AC472E21AB6CFB0030FD29 /* manager */,
+				4212318221AA466D005AF950 /* view controller */,
 				42AD7D14219E438D00EB72CE /* AppDelegate.swift */,
-				42AD7D16219E438D00EB72CE /* ViewController.swift */,
 				42AD7D18219E438D00EB72CE /* Main.storyboard */,
 				42AD7D1B219E438E00EB72CE /* Assets.xcassets */,
 				42AD7D1D219E438E00EB72CE /* LaunchScreen.storyboard */,
 				42AD7D20219E438E00EB72CE /* Info.plist */,
-				4212318321AA46AE005AF950 /* NearestTableViewController.swift */,
-				4212318521AA46DB005AF950 /* StationsTableViewController.swift */,
-				4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */,
 			);
 			path = MetroExplorerApp;
 			sourceTree = "<group>";
@@ -152,11 +183,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42AC473921AB6DAC0030FD29 /* YelpResponse.swift in Sources */,
+				42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */,
 				4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */,
 				4212318421AA46AE005AF950 /* NearestTableViewController.swift in Sources */,
 				42AD7D17219E438D00EB72CE /* ViewController.swift in Sources */,
+				42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */,
 				4212318821AA46F7005AF950 /* FavoritesTableViewController.swift in Sources */,
+				42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */,
 				42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */,
+				42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

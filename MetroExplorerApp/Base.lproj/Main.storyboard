@@ -13,7 +13,7 @@
         <!--Metro Explorer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
         <!--Select Station-->
         <scene sceneID="wuA-lY-cS7">
             <objects>
-                <tableViewController id="H0i-s4-UQw" customClass="StationsTableViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="H0i-s4-UQw" customClass="MetroStationsViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DYF-h5-gJI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="2484" y="260"/>
         </scene>
-        <!--View Controller-->
+        <!--Landmark Detail View Controller-->
         <scene sceneID="eFQ-na-EMk">
             <objects>
-                <viewController id="fod-7F-5xI" sceneMemberID="viewController">
+                <viewController id="fod-7F-5xI" customClass="LandmarkDetailViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pn7-1C-YXr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
         <!--Favorites-->
         <scene sceneID="T31-8k-GDk">
             <objects>
-                <tableViewController id="eQv-Uz-CCE" customClass="FavoritesTableViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="eQv-Uz-CCE" customClass="LandmarksViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qMs-KL-l25">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -147,7 +147,7 @@
         <!--Title-->
         <scene sceneID="MSG-QS-4vi">
             <objects>
-                <tableViewController id="xPE-iQ-Ejc" customClass="NearestTableViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xPE-iQ-Ejc" customClass="LandmarksViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7HF-Td-AxY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

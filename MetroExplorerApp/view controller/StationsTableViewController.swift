@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StationsTableViewController: UITableViewController {
+class MetroStationsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

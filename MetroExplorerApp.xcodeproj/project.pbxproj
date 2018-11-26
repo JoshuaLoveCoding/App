@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4212318421AA46AE005AF950 /* NearestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318321AA46AE005AF950 /* NearestTableViewController.swift */; };
+		4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318321AA46AE005AF950 /* LandmarksViewController.swift */; };
 		4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318521AA46DB005AF950 /* StationsTableViewController.swift */; };
-		4212318821AA46F7005AF950 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */; };
+		4234AE1821AC569700D153BA /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */; };
 		42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473021AB6D370030FD29 /* PersistenceManager.swift */; };
 		42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */; };
 		42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */; };
 		42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473621AB6D920030FD29 /* WMATAResponse.swift */; };
 		42AC473921AB6DAC0030FD29 /* YelpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473821AB6DAC0030FD29 /* YelpResponse.swift */; };
 		42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7D14219E438D00EB72CE /* AppDelegate.swift */; };
-		42AD7D17219E438D00EB72CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7D16219E438D00EB72CE /* ViewController.swift */; };
+		42AD7D17219E438D00EB72CE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD7D16219E438D00EB72CE /* MenuViewController.swift */; };
 		42AD7D1A219E438D00EB72CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D18219E438D00EB72CE /* Main.storyboard */; };
 		42AD7D1C219E438E00EB72CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D1B219E438E00EB72CE /* Assets.xcassets */; };
 		42AD7D1F219E438E00EB72CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D1D219E438E00EB72CE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4212318321AA46AE005AF950 /* NearestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestTableViewController.swift; sourceTree = "<group>"; };
+		4212318321AA46AE005AF950 /* LandmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksViewController.swift; sourceTree = "<group>"; };
 		4212318521AA46DB005AF950 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
-		4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
 		42AC473021AB6D370030FD29 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAAPIManager.swift; sourceTree = "<group>"; };
 		42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIManager.swift; sourceTree = "<group>"; };
@@ -33,7 +33,7 @@
 		42AC473821AB6DAC0030FD29 /* YelpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResponse.swift; sourceTree = "<group>"; };
 		42AD7D11219E438D00EB72CE /* MetroExplorerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetroExplorerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42AD7D14219E438D00EB72CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42AD7D16219E438D00EB72CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42AD7D16219E438D00EB72CE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		42AD7D19219E438D00EB72CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		42AD7D1B219E438E00EB72CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42AD7D1E219E438E00EB72CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,10 +54,10 @@
 		4212318221AA466D005AF950 /* view controller */ = {
 			isa = PBXGroup;
 			children = (
-				42AD7D16219E438D00EB72CE /* ViewController.swift */,
-				4212318321AA46AE005AF950 /* NearestTableViewController.swift */,
+				42AD7D16219E438D00EB72CE /* MenuViewController.swift */,
+				4212318321AA46AE005AF950 /* LandmarksViewController.swift */,
 				4212318521AA46DB005AF950 /* StationsTableViewController.swift */,
-				4212318721AA46F7005AF950 /* FavoritesTableViewController.swift */,
+				4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */,
 			);
 			path = "view controller";
 			sourceTree = "<group>";
@@ -186,10 +186,10 @@
 				42AC473921AB6DAC0030FD29 /* YelpResponse.swift in Sources */,
 				42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */,
 				4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */,
-				4212318421AA46AE005AF950 /* NearestTableViewController.swift in Sources */,
-				42AD7D17219E438D00EB72CE /* ViewController.swift in Sources */,
+				4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */,
+				42AD7D17219E438D00EB72CE /* MenuViewController.swift in Sources */,
+				4234AE1821AC569700D153BA /* LandmarkDetailViewController.swift in Sources */,
 				42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */,
-				4212318821AA46F7005AF950 /* FavoritesTableViewController.swift in Sources */,
 				42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */,
 				42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */,
 				42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */,

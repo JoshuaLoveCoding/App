@@ -1,5 +1,5 @@
 //
-//  FavoritesTableViewController.swift
+//  NearestTableViewController.swift
 //  MetroExplorerApp
 //
 //  Created by Joshua on 11/24/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesTableViewController: UITableViewController {
+class LandmarksViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

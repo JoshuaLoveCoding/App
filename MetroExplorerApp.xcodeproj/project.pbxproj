@@ -20,6 +20,7 @@
 		42AD7D1A219E438D00EB72CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D18219E438D00EB72CE /* Main.storyboard */; };
 		42AD7D1C219E438E00EB72CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D1B219E438E00EB72CE /* Assets.xcassets */; };
 		42AD7D1F219E438E00EB72CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42AD7D1D219E438E00EB72CE /* LaunchScreen.storyboard */; };
+		7C547A6280D4712ADC70C2BF /* Pods_MetroExplorerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B1D22534E7DF3616CE9162 /* Pods_MetroExplorerApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		42AD7D1B219E438E00EB72CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42AD7D1E219E438E00EB72CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42AD7D20219E438E00EB72CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75B1D22534E7DF3616CE9162 /* Pods_MetroExplorerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetroExplorerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9341B940FE1CC155EBB246A /* Pods-MetroExplorerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetroExplorerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp.release.xcconfig"; sourceTree = "<group>"; };
+		D78444428E637B50A1B2D39B /* Pods-MetroExplorerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetroExplorerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C547A6280D4712ADC70C2BF /* Pods_MetroExplorerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +91,8 @@
 			children = (
 				42AD7D13219E438D00EB72CE /* MetroExplorerApp */,
 				42AD7D12219E438D00EB72CE /* Products */,
+				CF35F87D0DCBA7709CEFA643 /* Pods */,
+				7DB66FF6469FA3A9B405AFE7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +119,23 @@
 			path = MetroExplorerApp;
 			sourceTree = "<group>";
 		};
+		7DB66FF6469FA3A9B405AFE7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				75B1D22534E7DF3616CE9162 /* Pods_MetroExplorerApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF35F87D0DCBA7709CEFA643 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D78444428E637B50A1B2D39B /* Pods-MetroExplorerApp.debug.xcconfig */,
+				B9341B940FE1CC155EBB246A /* Pods-MetroExplorerApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42AD7D23219E438E00EB72CE /* Build configuration list for PBXNativeTarget "MetroExplorerApp" */;
 			buildPhases = (
+				3922CA25C4B8A4ACBD491028 /* [CP] Check Pods Manifest.lock */,
 				42AD7D0D219E438D00EB72CE /* Sources */,
 				42AD7D0E219E438D00EB72CE /* Frameworks */,
 				42AD7D0F219E438D00EB72CE /* Resources */,
+				DDDA0F76EA72D62942FF9E54 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,6 +203,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3922CA25C4B8A4ACBD491028 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MetroExplorerApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDDA0F76EA72D62942FF9E54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42AD7D0D219E438D00EB72CE /* Sources */ = {
@@ -336,6 +409,7 @@
 		};
 		42AD7D24219E438E00EB72CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D78444428E637B50A1B2D39B /* Pods-MetroExplorerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -353,6 +427,7 @@
 		};
 		42AD7D25219E438E00EB72CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9341B940FE1CC155EBB246A /* Pods-MetroExplorerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

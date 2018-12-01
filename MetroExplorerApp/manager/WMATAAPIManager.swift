@@ -21,7 +21,7 @@ class WMATAAPIManager {
         var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations")!
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: "9dc969f0b6f4449181166e93b950d68d")
+            URLQueryItem(name: "api_key", value: "***")
         ]
         
         let url = urlComponents.url!
@@ -69,7 +69,19 @@ class WMATAAPIManager {
                     
                     let address : String? = "\(street), \(city), \(state)"
                     
-                    let station = Station(name: station.Name, address: address, lineCode1: station.LineCode1, lineCode2: station.LineCode2, lineCode3: station.LineCode3, lat: station.Lat, lon: station.Lon)
+                    var lineCode2 : String = " "
+                    
+                    if (station.LineCode2 != nil) {
+                        lineCode2 = station.LineCode2!
+                    }
+                    
+                    var lineCode3 : String = " "
+                    
+                    if (station.LineCode3 != nil) {
+                        lineCode3 = station.LineCode3!
+                    }
+                    
+                    let station = Station(name: station.Name, address: address, lineCode1: station.LineCode1, lineCode2: lineCode2, lineCode3: lineCode3, lat: station.Lat, lon: station.Lon)
                     
                     stations.append(station)
                 }

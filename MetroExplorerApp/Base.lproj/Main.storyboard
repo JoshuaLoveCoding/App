@@ -19,28 +19,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgl-zj-eon">
-                                <rect key="frame" x="160.5" y="134" width="54" height="30"/>
-                                <state key="normal" title="Nearest"/>
+                                <rect key="frame" x="155.5" y="134" width="64" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Nearest">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="xPE-iQ-Ejc" kind="show" id="ifw-DO-roR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tB-ur-uJQ">
-                                <rect key="frame" x="139.5" y="189" width="96" height="30"/>
-                                <state key="normal" title="Select Station"/>
+                                <rect key="frame" x="131" y="193" width="113" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Select Station">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="H0i-s4-UQw" kind="show" id="5Rh-X2-5VS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSB-oz-brx">
-                                <rect key="frame" x="156.5" y="244" width="62" height="30"/>
-                                <state key="normal" title="Favorites"/>
+                                <rect key="frame" x="151" y="252" width="73" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Favorites">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <segue destination="eQv-Uz-CCE" kind="show" id="eOY-4c-0gY"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.14899864792823792" green="0.14903163909912109" blue="0.14899659156799316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iSB-oz-brx" firstAttribute="top" secondItem="4tB-ur-uJQ" secondAttribute="bottom" constant="25" id="Ffn-uJ-1WO"/>
                             <constraint firstItem="4tB-ur-uJQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jb1-NM-lL6"/>
@@ -146,7 +155,7 @@
             </objects>
             <point key="canvasLocation" x="2484" y="259.52023988005999"/>
         </scene>
-        <!--Landmark Detail View Controller-->
+        <!--Landmark-->
         <scene sceneID="eFQ-na-EMk">
             <objects>
                 <viewController id="fod-7F-5xI" customClass="LandmarkDetailViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,26 +163,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-ZE-0ge">
-                                <rect key="frame" x="16" y="90" width="132" height="132"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-ZE-0ge">
+                                <rect key="frame" x="4" y="124" width="367" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="367" id="NRQ-iJ-8YS"/>
+                                    <constraint firstAttribute="height" constant="232" id="inW-mh-LdH"/>
+                                </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HMx-iC-Prk">
-                                <rect key="frame" x="156" y="90" width="194" height="406"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ysY-Mf-k2C">
+                                <rect key="frame" x="4" y="84" width="367" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="4gR-xD-VvE">
+                                <rect key="frame" x="4" y="429" width="367" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JBA-Vc-fYn">
+                                <rect key="frame" x="4" y="366" width="171" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="a70-Fn-ymN"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.14899864792823792" green="0.14903163909912109" blue="0.14899659156799316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ysY-Mf-k2C" firstAttribute="top" secondItem="YKi-62-XLm" secondAttribute="top" constant="20" id="9B0-K1-hWs"/>
+                            <constraint firstItem="4gR-xD-VvE" firstAttribute="leading" secondItem="YKi-62-XLm" secondAttribute="leading" constant="4" id="CxL-qN-uv2"/>
+                            <constraint firstItem="YKi-62-XLm" firstAttribute="trailing" secondItem="4gR-xD-VvE" secondAttribute="trailing" constant="4" id="JKF-ij-q0q"/>
+                            <constraint firstItem="ocL-ZE-0ge" firstAttribute="top" secondItem="ysY-Mf-k2C" secondAttribute="bottom" constant="10" id="MYM-ab-N7G"/>
+                            <constraint firstItem="ysY-Mf-k2C" firstAttribute="leading" secondItem="YKi-62-XLm" secondAttribute="leading" constant="4" id="SBU-8c-Os2"/>
+                            <constraint firstItem="4gR-xD-VvE" firstAttribute="top" secondItem="JBA-Vc-fYn" secondAttribute="bottom" constant="20" id="YMq-57-Pla"/>
+                            <constraint firstItem="YKi-62-XLm" firstAttribute="trailing" secondItem="ysY-Mf-k2C" secondAttribute="trailing" constant="4" id="gNh-Mo-Sf9"/>
+                            <constraint firstItem="ocL-ZE-0ge" firstAttribute="leading" secondItem="YKi-62-XLm" secondAttribute="leading" constant="4" id="kLh-Qs-xfx"/>
+                            <constraint firstItem="JBA-Vc-fYn" firstAttribute="leading" secondItem="YKi-62-XLm" secondAttribute="leading" constant="4" id="kq8-ca-Khl"/>
+                            <constraint firstItem="YKi-62-XLm" firstAttribute="trailing" secondItem="ocL-ZE-0ge" secondAttribute="trailing" constant="4" id="lMv-vy-uOa"/>
+                            <constraint firstItem="JBA-Vc-fYn" firstAttribute="top" secondItem="ocL-ZE-0ge" secondAttribute="bottom" constant="10" id="vc3-bC-B50"/>
+                            <constraint firstItem="YKi-62-XLm" firstAttribute="trailing" secondItem="JBA-Vc-fYn" secondAttribute="trailing" constant="200" id="ynG-5l-jX6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YKi-62-XLm"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Landmark" id="e8D-bg-Y9p">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="1bE-MU-Ih0">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="fod-7F-5xI" id="kGw-hh-0Wq"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="4cJ-kd-9Gd">
+                                <connections>
+                                    <action selector="favoriteButtonPressed:" destination="fod-7F-5xI" id="YzE-mj-ww5"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="search" id="a8g-n0-SSB">
+                                <connections>
+                                    <action selector="showMeWhere:" destination="fod-7F-5xI" id="80m-cC-kD1"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="landmarkAddressLabel" destination="4gR-xD-VvE" id="iuK-aZ-9K3"/>
+                        <outlet property="nameLabel" destination="ysY-Mf-k2C" id="RzO-3k-vbK"/>
+                        <outlet property="ratingImage" destination="JBA-Vc-fYn" id="AEb-DV-S4Z"/>
+                        <outlet property="urlImage" destination="ocL-ZE-0ge" id="eLq-W6-Yvy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Rg-NH-4mT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4205.6000000000004" y="259.52023988005999"/>
+            <point key="canvasLocation" x="3686" y="260"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="T31-8k-GDk">
@@ -204,7 +265,7 @@
             </objects>
             <point key="canvasLocation" x="2526" y="1066"/>
         </scene>
-        <!--Title-->
+        <!--Landmarks-->
         <scene sceneID="MSG-QS-4vi">
             <objects>
                 <tableViewController id="xPE-iQ-Ejc" customClass="LandmarksViewController" customModule="MetroExplorerApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -267,7 +328,10 @@
                             <outlet property="delegate" destination="xPE-iQ-Ejc" id="7Ou-dp-97q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="rXL-a9-MUd"/>
+                    <navigationItem key="navigationItem" title="Landmarks" id="rXL-a9-MUd"/>
+                    <connections>
+                        <segue destination="fod-7F-5xI" kind="show" identifier="segue" id="0nX-0u-NTm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3s-Q8-z5J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

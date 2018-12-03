@@ -70,6 +70,8 @@ class YelpAPIManager {
                 for landmark in yelpResponse.businesses {
                     let name = landmark.name
                     let rating = landmark.rating
+                    let latitude = landmark.coordinates.latitude
+                    let longitude = landmark.coordinates.longitude
                     
                     var image_url : String = " "
                     
@@ -80,12 +82,12 @@ class YelpAPIManager {
                     var address : String = " "
                     
                     if (landmark.location.address1 != "") {
-                        address = "\(landmark.location.address1), \(landmark.location.city)"
+                        address = "\(landmark.location.address1!), \(landmark.location.city)"
                     } else {
                         address = "\(landmark.location.city)"
                     }
                     
-                    let landmark = Landmark(name: name, address: address, image_url: image_url, rating: rating)
+                    let landmark = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
                     
                     landmarks.append(landmark)
                 }

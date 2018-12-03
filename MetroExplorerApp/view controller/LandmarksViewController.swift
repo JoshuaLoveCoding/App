@@ -66,6 +66,20 @@ class LandmarksViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "segue", sender: indexPath.row)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //pass the data to your next view controller
+        
+        let row = sender as! Int
+        
+        let vc = segue.destination as! LandmarkDetailViewController
+        vc.landmark = landmarks[row]
+    }
 }
 
 extension LandmarksViewController: FetchLandmarksDelegate {

@@ -8,9 +8,11 @@
 
 import Foundation
 
-struct Landmark {
+struct Landmark: Codable {
     let name: String
     let address: String?
     let image_url : String
     let rating : Double
+    let latitude: Double
+    let longitude: Double
 }

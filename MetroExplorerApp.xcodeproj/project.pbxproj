@@ -10,6 +10,7 @@
 		4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318321AA46AE005AF950 /* LandmarksViewController.swift */; };
 		4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318521AA46DB005AF950 /* StationsTableViewController.swift */; };
 		4234AE1821AC569700D153BA /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */; };
+		429A98FE21B49A0A0048B1B4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429A98FD21B49A0A0048B1B4 /* Extensions.swift */; };
 		42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473021AB6D370030FD29 /* PersistenceManager.swift */; };
 		42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */; };
 		42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */; };
@@ -31,6 +32,7 @@
 		4212318321AA46AE005AF950 /* LandmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksViewController.swift; sourceTree = "<group>"; };
 		4212318521AA46DB005AF950 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
 		4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
+		429A98FD21B49A0A0048B1B4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42AC473021AB6D370030FD29 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMATAAPIManager.swift; sourceTree = "<group>"; };
 		42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAPIManager.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				42AD7D20219E438E00EB72CE /* Info.plist */,
 				42C6EDAB21B1FF6300EB7743 /* StationsTableViewCell.swift */,
 				42C8517D21B37E8D004A9C4B /* LandmarksTableViewCell.swift */,
+				429A98FD21B49A0A0048B1B4 /* Extensions.swift */,
 			);
 			path = MetroExplorerApp;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				42C6EDAC21B1FF6300EB7743 /* StationsTableViewCell.swift in Sources */,
 				42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */,
 				42AC473521AB6D6D0030FD29 /* YelpAPIManager.swift in Sources */,
+				429A98FE21B49A0A0048B1B4 /* Extensions.swift in Sources */,
 				42C6EDA821B1CAC800EB7743 /* Station.swift in Sources */,
 				42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */,
 				42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */,

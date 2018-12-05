@@ -1,18 +1,28 @@
 //
-//  StationsTableViewController.swift
+//  NearestTableViewController.swift
 //  MetroExplorerApp
 //
-//  Created by Joshua on 11/24/18.
+//  Created by Joshua on 12/5/18.
 //  Copyright © 2018 Joshua. All rights reserved.
 //
 
 import UIKit
 import MBProgressHUD
+import CoreLocation
 
-class MetroStationsViewController: UITableViewController {
+class NearestTableViewController: UITableViewController {
+    var lat: Double = 0
+    var lon: Double = 0
     let wmataAPIManager = WMATAAPIManager()
+    let locationDetector = LocationDetector()
     
     var stations = [Station]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    var stationsNew = [Station]() {
         didSet {
             tableView.reloadData()
         }
@@ -21,12 +31,13 @@ class MetroStationsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wmataAPIManager.delegate = self
+        locationDetector.delegate = self
         fetchStation()
     }
     
     private func fetchStation() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        wmataAPIManager.fetchStations()
+        locationDetector.findLocation()
     }
     
     // MARK: - Table view data source
@@ -35,13 +46,13 @@ class MetroStationsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stations.count
+        return stationsNew.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! StationsTableViewCell
         
-        let station = stations[indexPath.row]
+        let station = stationsNew[indexPath.row]
         
         cell.stationNameLabel.text = station.name
         cell.stationAddressLabel.text = station.address
@@ -97,7 +108,7 @@ class MetroStationsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "segueStation", sender: indexPath.row)
+        performSegue(withIdentifier: "segueNearest", sender: indexPath.row)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,15 +117,43 @@ class MetroStationsViewController: UITableViewController {
         let row = sender as! Int
         
         let vc = segue.destination as! LandmarksViewController
-        vc.station = stations[row]
+        vc.station = stationsNew[row]
     }
 }
 
-extension MetroStationsViewController: FetchStationsDelegate {
+extension NearestTableViewController: LocationDetectorDelegate {
+    func locationDetected(latitude: Double, longitude: Double) {
+        self.lat = latitude
+        self.lon = longitude
+        wmataAPIManager.fetchStations()
+    }
+    
+    func locationNotDetected() {
+        print("no location found :(")
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            //TODO: Show a AlertController with error
+        }
+    }
+}
+
+extension NearestTableViewController: FetchStationsDelegate {
     func stationsFound(_ stations: [Station]) {
         print("stations found - here they are in the controller!")
         DispatchQueue.main.async {
             self.stations = stations
+            var dis: Double = 999999999
+            var sta = Station(name: "", address: "", lineCode1: "", lineCode2: "", lineCode3: "", lat: -1, lon: -1)
+            for ele in stations {
+                if ((CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))) < dis) {
+                    dis = CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))
+                    sta = ele
+                }
+            }
+            if (self.stationsNew.count == 0) {
+                self.stationsNew.append(sta)
+            }
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
@@ -122,6 +161,7 @@ extension MetroStationsViewController: FetchStationsDelegate {
     func stationsNotFound(reason: WMATAAPIManager.FailureReason) {
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
+            
             let alertController = UIAlertController(title: "Problem fetching stations", message: reason.rawValue, preferredStyle: .alert)
             
             switch(reason) {

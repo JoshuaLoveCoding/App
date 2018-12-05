@@ -10,20 +10,27 @@ import Foundation
 
 protocol FetchLandmarksDelegate {
     func landmarksFound(_ landmarks: [Landmark])
-    func landmarksNotFound()
+    func landmarksNotFound(reason: YelpAPIManager.FailureReason)
 }
 
 class YelpAPIManager {
     
+    enum FailureReason: String {
+        case noResponse = "No response received" //allow the user to try again
+        case non200Response = "Bad response" //give up
+        case noData = "No data recieved" //give up
+        case badData = "Bad data" //give up
+    }
+    
     var delegate: FetchLandmarksDelegate?
     
-    func fetchStations() {
+    func fetchLandmarks(lat: Double, lon: Double) {
         var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")!
         
         urlComponents.queryItems = [
             URLQueryItem(name: "term", value: "landmarks"),
-            URLQueryItem(name: "latitude", value: "38.876588"),
-            URLQueryItem(name: "longitude", value: "-77.005086"),
+            URLQueryItem(name: "latitude", value: "\(lat)"),
+            URLQueryItem(name: "longitude", value: "\(lon)"),
             URLQueryItem(name: "radius", value: "2000")
         ]
         
@@ -36,22 +43,24 @@ class YelpAPIManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             //PUT CODE HERE TO RUN UPON COMPLETION
-            print("request complete")
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("response is nil or not 200")
+            guard let response = response as? HTTPURLResponse else {
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound(reason: .noResponse)
                 
                 return
             }
             
+            guard response.statusCode == 200 else {
+                self.delegate?.landmarksNotFound(reason: .non200Response)
+                
+                return
+            }
             //HERE - response is NOT nil and IS 200
             
             guard let data = data else {
-                print("data is nil")
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound(reason: .noData)
                 
                 return
             }
@@ -73,15 +82,15 @@ class YelpAPIManager {
                     let latitude = landmark.coordinates.latitude
                     let longitude = landmark.coordinates.longitude
                     
-                    var image_url : String = " "
+                    var image_url : String = ""
                     
-                    if (landmark.imageUrl != "") {
+                    if (landmark.imageUrl != nil) {
                         image_url = landmark.imageUrl!
                     }
                     
-                    var address : String = " "
+                    var address : String = ""
                     
-                    if (landmark.location.address1 != "") {
+                    if (landmark.location.address1 != nil) {
                         address = "\(landmark.location.address1!), \(landmark.location.city)"
                     } else {
                         address = "\(landmark.location.city)"
@@ -92,7 +101,7 @@ class YelpAPIManager {
                     landmarks.append(landmark)
                 }
                 
-                //now what do we do with the gyms????
+                //now what do we do with the landmarks????
                 print(landmarks)
                 
                 self.delegate?.landmarksFound(landmarks)
@@ -100,10 +109,9 @@ class YelpAPIManager {
                 
             } catch let error {
                 //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
-                print("codable failed - bad data format")
                 print(error.localizedDescription)
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound(reason: .badData)
             }
         }
         

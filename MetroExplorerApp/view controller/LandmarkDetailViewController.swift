@@ -11,7 +11,7 @@ import MapKit
 
 class LandmarkDetailViewController: UIViewController {
     
-    var landmark = Landmark(name: "", address: "", image_url: "", rating: -1, latitude: -1, longitude: -1)
+    var landmark = Landmark(name: "", address: "", image_url: "", rating: -1, latitude: 0, longitude: 0)
     var urlString:String = ""
     
     @IBOutlet weak var nameLabel:UILabel!
@@ -81,6 +81,8 @@ class LandmarkDetailViewController: UIViewController {
         let url = URL(string: urlString)
         if (url != nil) {
             urlImage.load(url: url!)
+        } else {
+            urlImage.image = UIImage(named: "no_image_available")
         }
         
         if(landmark.rating == 0) {

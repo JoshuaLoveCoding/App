@@ -25,6 +25,9 @@
 		42C6EDAC21B1FF6300EB7743 /* StationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C6EDAB21B1FF6300EB7743 /* StationsTableViewCell.swift */; };
 		42C8517C21B37E5C004A9C4B /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8517B21B37E5C004A9C4B /* Landmark.swift */; };
 		42C8517E21B37E8D004A9C4B /* LandmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C8517D21B37E8D004A9C4B /* LandmarksTableViewCell.swift */; };
+		42DA297C21B82D8F00BDE267 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA297B21B82D8F00BDE267 /* FavoritesTableViewCell.swift */; };
+		42DA297E21B82E2400BDE267 /* LocationDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA297D21B82E2400BDE267 /* LocationDetector.swift */; };
+		42DA298021B82EA400BDE267 /* NearestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DA297F21B82EA400BDE267 /* NearestTableViewController.swift */; };
 		7C547A6280D4712ADC70C2BF /* Pods_MetroExplorerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B1D22534E7DF3616CE9162 /* Pods_MetroExplorerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		42C6EDAB21B1FF6300EB7743 /* StationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewCell.swift; sourceTree = "<group>"; };
 		42C8517B21B37E5C004A9C4B /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
 		42C8517D21B37E8D004A9C4B /* LandmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksTableViewCell.swift; sourceTree = "<group>"; };
+		42DA297B21B82D8F00BDE267 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		42DA297D21B82E2400BDE267 /* LocationDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetector.swift; sourceTree = "<group>"; };
+		42DA297F21B82EA400BDE267 /* NearestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestTableViewController.swift; sourceTree = "<group>"; };
 		75B1D22534E7DF3616CE9162 /* Pods_MetroExplorerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MetroExplorerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9341B940FE1CC155EBB246A /* Pods-MetroExplorerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetroExplorerApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp.release.xcconfig"; sourceTree = "<group>"; };
 		D78444428E637B50A1B2D39B /* Pods-MetroExplorerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MetroExplorerApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MetroExplorerApp/Pods-MetroExplorerApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 				4212318321AA46AE005AF950 /* LandmarksViewController.swift */,
 				4212318521AA46DB005AF950 /* StationsTableViewController.swift */,
 				4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */,
+				42DA297F21B82EA400BDE267 /* NearestTableViewController.swift */,
 			);
 			path = "view controller";
 			sourceTree = "<group>";
@@ -83,6 +90,7 @@
 				42AC473021AB6D370030FD29 /* PersistenceManager.swift */,
 				42AC473221AB6D4D0030FD29 /* WMATAAPIManager.swift */,
 				42AC473421AB6D6D0030FD29 /* YelpAPIManager.swift */,
+				42DA297D21B82E2400BDE267 /* LocationDetector.swift */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 				42C6EDAB21B1FF6300EB7743 /* StationsTableViewCell.swift */,
 				42C8517D21B37E8D004A9C4B /* LandmarksTableViewCell.swift */,
 				429A98FD21B49A0A0048B1B4 /* Extensions.swift */,
+				42DA297B21B82D8F00BDE267 /* FavoritesTableViewCell.swift */,
 			);
 			path = MetroExplorerApp;
 			sourceTree = "<group>";
@@ -277,6 +286,7 @@
 				4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */,
 				4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */,
 				42AD7D17219E438D00EB72CE /* MenuViewController.swift in Sources */,
+				42DA298021B82EA400BDE267 /* NearestTableViewController.swift in Sources */,
 				4234AE1821AC569700D153BA /* LandmarkDetailViewController.swift in Sources */,
 				42C6EDAC21B1FF6300EB7743 /* StationsTableViewCell.swift in Sources */,
 				42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */,
@@ -284,6 +294,8 @@
 				429A98FE21B49A0A0048B1B4 /* Extensions.swift in Sources */,
 				42C6EDA821B1CAC800EB7743 /* Station.swift in Sources */,
 				42AD7D15219E438D00EB72CE /* AppDelegate.swift in Sources */,
+				42DA297C21B82D8F00BDE267 /* FavoritesTableViewCell.swift in Sources */,
+				42DA297E21B82E2400BDE267 /* LocationDetector.swift in Sources */,
 				42AC473721AB6D920030FD29 /* WMATAResponse.swift in Sources */,
 				42C8517E21B37E8D004A9C4B /* LandmarksTableViewCell.swift in Sources */,
 			);

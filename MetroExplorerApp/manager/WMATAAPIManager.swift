@@ -10,10 +10,17 @@ import Foundation
 
 protocol FetchStationsDelegate {
     func stationsFound(_ stations: [Station])
-    func stationsNotFound()
+    func stationsNotFound(reason: WMATAAPIManager.FailureReason)
 }
 
 class WMATAAPIManager {
+    
+    enum FailureReason: String {
+        case noResponse = "No response received" //allow the user to try again
+        case non200Response = "Bad response" //give up
+        case noData = "No data recieved" //give up
+        case badData = "Bad data" //give up
+    }
     
     var delegate: FetchStationsDelegate?
     
@@ -31,12 +38,15 @@ class WMATAAPIManager {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             //PUT CODE HERE TO RUN UPON COMPLETION
-            print("request complete")
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                print("response is nil or not 200")
+            guard let response = response as? HTTPURLResponse else {
+                self.delegate?.stationsNotFound(reason: .noResponse)
                 
-                self.delegate?.stationsNotFound()
+                return
+            }
+            
+            guard response.statusCode == 200 else {
+                self.delegate?.stationsNotFound(reason: .non200Response)
                 
                 return
             }
@@ -44,9 +54,8 @@ class WMATAAPIManager {
             //HERE - response is NOT nil and IS 200
             
             guard let data = data else {
-                print("data is nil")
                 
-                self.delegate?.stationsNotFound()
+                self.delegate?.stationsNotFound(reason: .noData)
                 
                 return
             }
@@ -69,13 +78,13 @@ class WMATAAPIManager {
                     
                     let address : String? = "\(street), \(city), \(state)"
                     
-                    var lineCode2 : String = " "
+                    var lineCode2 : String = ""
                     
                     if (station.LineCode2 != nil) {
                         lineCode2 = station.LineCode2!
                     }
                     
-                    var lineCode3 : String = " "
+                    var lineCode3 : String = ""
                     
                     if (station.LineCode3 != nil) {
                         lineCode3 = station.LineCode3!
@@ -86,7 +95,7 @@ class WMATAAPIManager {
                     stations.append(station)
                 }
                 
-                //now what do we do with the gyms????
+                //now what do we do with the stations????
                 print(stations)
                 
                 self.delegate?.stationsFound(stations)
@@ -94,10 +103,9 @@ class WMATAAPIManager {
                 
             } catch let error {
                 //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
-                print("codable failed - bad data format")
                 print(error.localizedDescription)
                 
-                self.delegate?.stationsNotFound()
+                self.delegate?.stationsNotFound(reason: .badData)
             }
         }
         

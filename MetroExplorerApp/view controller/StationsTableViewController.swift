@@ -136,7 +136,7 @@ extension MetroStationsViewController: FetchStationsDelegate {
                 alertController.addAction(retryAction)
                 
             case .non200Response, .noData, .badData:
-                let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
+                let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
                 
                 alertController.addAction(okayAction)
             }

@@ -65,8 +65,9 @@ extension LocationDetector: CLLocationManagerDelegate {
             locationManager.requestLocation()
         }
         else {
-            delegate?.locationNotDetected()
+            if status != .notDetermined {
+                delegate?.locationNotDetected()
+            }
         }
     }
-    
 }

@@ -90,7 +90,7 @@ class YelpAPIManager {
                     
                     var address : String = ""
                     
-                    if (landmark.location.address1 != nil) {
+                    if (landmark.location.address1 != nil && landmark.location.address1 != "") {
                         address = "\(landmark.location.address1!), \(landmark.location.city)"
                     } else {
                         address = "\(landmark.location.city)"

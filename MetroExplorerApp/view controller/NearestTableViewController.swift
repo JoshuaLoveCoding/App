@@ -11,6 +11,7 @@ import MBProgressHUD
 import CoreLocation
 
 class NearestTableViewController: UITableViewController {
+    var gameTimer: Timer!
     var lat: Double = 0
     var lon: Double = 0
     let wmataAPIManager = WMATAAPIManager()
@@ -33,6 +34,13 @@ class NearestTableViewController: UITableViewController {
         wmataAPIManager.delegate = self
         locationDetector.delegate = self
         fetchStation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if (gameTimer != nil) {
+            gameTimer.invalidate()
+        }
     }
     
     private func fetchStation() {
@@ -131,10 +139,19 @@ extension NearestTableViewController: LocationDetectorDelegate {
     func locationNotDetected() {
         print("no location found :(")
         DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            //TODO: Show a AlertController with error
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+            //Show a AlertController with error
         }
+    }
+    @objc func runTimedCode() {
+        
+        MBProgressHUD.hide(for: self.view, animated: true)
+        
+        let alertController = UIAlertController(title: "Problem getting location", message: "Failed to get location to find nearest station.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
+        alertController.addAction(okayAction)
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -146,8 +163,9 @@ extension NearestTableViewController: FetchStationsDelegate {
             var dis: Double = 999999999
             var sta = Station(name: "", address: "", lineCode1: "", lineCode2: "", lineCode3: "", lat: -1, lon: -1)
             for ele in stations {
-                if ((CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))) < dis) {
-                    dis = CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))
+                let len: Double = CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))
+                if (len < dis) {
+                    dis = len
                     sta = ele
                 }
             }
@@ -176,7 +194,7 @@ extension NearestTableViewController: FetchStationsDelegate {
                 alertController.addAction(retryAction)
                 
             case .non200Response, .noData, .badData:
-                let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
+                let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
                 
                 alertController.addAction(okayAction)
             }

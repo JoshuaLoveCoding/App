@@ -216,7 +216,7 @@
                                     <action selector="shareButtonPressed:" destination="fod-7F-5xI" id="kGw-hh-0Wq"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="bookmarks" id="4cJ-kd-9Gd">
+                            <barButtonItem title="Button" image="heart" id="4cJ-kd-9Gd">
                                 <connections>
                                     <action selector="favoriteButtonPressed:" destination="fod-7F-5xI" id="YzE-mj-ww5"/>
                                 </connections>
@@ -229,6 +229,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="4cJ-kd-9Gd" id="aQP-X3-WYs"/>
                         <outlet property="landmarkAddressLabel" destination="4gR-xD-VvE" id="iuK-aZ-9K3"/>
                         <outlet property="nameLabel" destination="ysY-Mf-k2C" id="RzO-3k-vbK"/>
                         <outlet property="ratingImage" destination="JBA-Vc-fYn" id="AEb-DV-S4Z"/>
@@ -494,6 +495,9 @@
             <point key="canvasLocation" x="2526" y="-672"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="heart" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TeS-72-7gy"/>
         <segue reference="CW0-Pm-jNy"/>

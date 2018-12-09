@@ -13,7 +13,9 @@ class LandmarkDetailViewController: UIViewController {
     
     var landmark = Landmark(name: "", address: "", image_url: "", rating: -1, latitude: 0, longitude: 0)
     var urlString:String = ""
+    var have : Bool = false
     
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     @IBOutlet weak var nameLabel:UILabel!
     @IBOutlet weak var landmarkAddressLabel: UILabel!
     @IBOutlet weak var urlImage: UIImageView!
@@ -55,18 +57,13 @@ class LandmarkDetailViewController: UIViewController {
         let longitude = landmark.longitude
         
         let landmarks = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
-        let favorites = PersistenceManager.sharedInstance.fetchFavorites()
-        var have : Bool = false
-        for ele in favorites {
-            if (ele.address == landmark.address) {
-                have = true
-                break
-            }
-        }
+ 
         if (have != true) {
             createAlert(title: "Notice", message: "\(landmark.name) has been added to favorites")
+            favoriteButton.image = UIImage(named:"heart_filled")
         } else {
             createAlert(title: "Notice", message: "\(landmark.name) has been removed from favorites")
+            favoriteButton.image = UIImage(named:"heart")
         }
         PersistenceManager.sharedInstance.saveFavorite(landmark: landmarks)
     }
@@ -108,6 +105,21 @@ class LandmarkDetailViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let favorites = PersistenceManager.sharedInstance.fetchFavorites()
+        for ele in favorites {
+            if (ele.address == landmark.address) {
+                have = true
+                break
+            }
+        }
+        if (have != true) {
+            favoriteButton.image = UIImage(named:"heart")
+        } else {
+            favoriteButton.image = UIImage(named:"heart_filled")
+        }
+    }
     
     func createAlert (title:String, message:String)
     {

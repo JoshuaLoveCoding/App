@@ -27,7 +27,7 @@
                                             <constraint firstAttribute="height" constant="100" id="hdO-gn-eOS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="Nearest">
+                                        <state key="normal" title="Nearest Station">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -256,11 +256,13 @@
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Button" image="heart" id="4cJ-kd-9Gd">
+                                <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="favoriteButtonPressed:" destination="fod-7F-5xI" id="YzE-mj-ww5"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="search" id="a8g-n0-SSB">
+                            <barButtonItem title="Item" image="appmap" id="a8g-n0-SSB">
+                                <color key="tintColor" red="0.0" green="0.47934520244598389" blue="0.99908632040023804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="showMeWhere:" destination="fod-7F-5xI" id="80m-cC-kD1"/>
                                 </connections>
@@ -532,11 +534,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="appmap" width="18" height="25"/>
         <image name="heart" width="25" height="25"/>
         <image name="metro" width="162" height="41.759998321533203"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TeS-72-7gy"/>
+        <segue reference="aAx-Xf-FQ7"/>
         <segue reference="CW0-Pm-jNy"/>
     </inferredMetricsTieBreakers>
 </document>

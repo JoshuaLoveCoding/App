@@ -24,7 +24,8 @@ class LandmarksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (self.title == "Landmarks") {
+        if self.title == "Landmarks" {
+            self.navigationItem.title = station.name
             self.lat = station.lat
             self.lon = station.lon
             yelpAPIManager.delegate = self
@@ -54,7 +55,7 @@ class LandmarksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count: Int = 0
-        if (self.title == "Landmarks") {
+        if self.title == "Landmarks" {
             count = landmarks.count
         } else {
             count = favorites.count
@@ -64,7 +65,7 @@ class LandmarksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cellToReturn = UITableViewCell()
-        if (self.title == "Landmarks") {
+        if self.title == "Landmarks" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarksTableViewCell
             
             let landmark = landmarks[indexPath.row]
@@ -74,9 +75,8 @@ class LandmarksViewController: UITableViewController {
             
             var urlString:String = ""
             urlString = landmark.image_url
-            let url = URL(string: urlString)
-            if (url != nil) {
-                cell.landmarkImage.load(url: url!)
+            if let url = URL(string: urlString) {
+                cell.landmarkImage.load(url: url)
             } else {
                 cell.landmarkImage.image = UIImage(named: "no_image_available")
             }
@@ -91,9 +91,8 @@ class LandmarksViewController: UITableViewController {
             
             var urlString:String = ""
             urlString = favorite.image_url
-            let url = URL(string: urlString)
-            if (url != nil) {
-                cell.favoriteImage.load(url: url!)
+            if let url = URL(string: urlString) {
+                cell.favoriteImage.load(url: url)
             } else {
                 cell.favoriteImage.image = UIImage(named: "no_image_available")
             }
@@ -103,7 +102,7 @@ class LandmarksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (self.title == "Landmarks") {
+        if self.title == "Landmarks" {
             performSegue(withIdentifier: "segue", sender: indexPath.row)
         } else {
             performSegue(withIdentifier: "segueFavorites", sender: indexPath.row)
@@ -116,7 +115,7 @@ class LandmarksViewController: UITableViewController {
         let row = sender as! Int
         
         let vc = segue.destination as! LandmarkDetailViewController
-        if (self.title == "Landmarks") {
+        if self.title == "Landmarks" {
             vc.landmark = landmarks[row]
         } else {
             vc.landmark = favorites[row]
@@ -126,7 +125,7 @@ class LandmarksViewController: UITableViewController {
 
 extension LandmarksViewController: FetchLandmarksDelegate {
     func landmarksFound(_ landmarks: [Landmark]) {
-        print("landmarks found - here they are in the controller!")
+        print("landmarks found - here they are in the controller.")
         DispatchQueue.main.async {
             self.landmarks = landmarks
             MBProgressHUD.hide(for: self.view, animated: true)

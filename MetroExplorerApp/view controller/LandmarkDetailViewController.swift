@@ -16,14 +16,14 @@ class LandmarkDetailViewController: UIViewController {
     var have : Bool = false
     
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
-    @IBOutlet weak var nameLabel:UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var landmarkAddressLabel: UILabel!
     @IBOutlet weak var urlImage: UIImageView!
     @IBOutlet weak var ratingImage: UIImageView!
     
     @IBAction func shareButtonPressed(_ sender: Any) {
         
-        let shareText = "Check out this landmark: \(landmark.name)! Address: \(landmark.address!) \(landmark.image_url)"
+        let shareText = "Check out this landmark: \(landmark.name). Address: \(landmark.address ?? "") \(landmark.image_url)"
         
         let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         
@@ -40,7 +40,9 @@ class LandmarkDetailViewController: UIViewController {
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
         let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
         
-        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+        let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey:
+            MKLaunchOptionsDirectionsModeTransit,
+                       MKLaunchOptionsShowsTrafficKey: true] as [String : Any]
         
         let placemark = MKPlacemark(coordinate: coordinates)
         let mapItem = MKMapItem(placemark: placemark)
@@ -57,8 +59,8 @@ class LandmarkDetailViewController: UIViewController {
         let longitude = landmark.longitude
         
         let landmarks = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
- 
-        if (have != true) {
+        
+        if have == false {
             createAlert(title: "Notice", message: "\(landmark.name) has been added to favorites")
             favoriteButton.image = UIImage(named:"heart_filled")
         } else {
@@ -71,36 +73,37 @@ class LandmarkDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = landmark.name
+        
         nameLabel?.text = landmark.name
         landmarkAddressLabel?.text = landmark.address
         
         urlString = landmark.image_url
-        let url = URL(string: urlString)
-        if (url != nil) {
-            urlImage.load(url: url!)
+        if let url = URL(string: urlString) {
+            urlImage.load(url: url)
         } else {
             urlImage.image = UIImage(named: "no_image_available")
         }
         
-        if(landmark.rating == 0) {
+        if landmark.rating == 0 {
             ratingImage.image = UIImage(named:"regular_0")
-        } else if (landmark.rating == 1) {
+        } else if landmark.rating == 1 {
             ratingImage.image = UIImage(named:"regular_1")
-        } else if (landmark.rating == 1.5) {
+        } else if landmark.rating == 1.5 {
             ratingImage.image = UIImage(named:"regular_1_half")
-        } else if (landmark.rating == 2) {
+        } else if landmark.rating == 2 {
             ratingImage.image = UIImage(named:"regular_2")
-        } else if (landmark.rating == 2.5) {
+        } else if landmark.rating == 2.5 {
             ratingImage.image = UIImage(named:"regular_2_half")
-        } else if (landmark.rating == 3) {
+        } else if landmark.rating == 3 {
             ratingImage.image = UIImage(named:"regular_3")
-        } else if (landmark.rating == 3.5) {
+        } else if landmark.rating == 3.5 {
             ratingImage.image = UIImage(named:"regular_3_half")
-        } else if (landmark.rating == 4) {
+        } else if landmark.rating == 4 {
             ratingImage.image = UIImage(named:"regular_4")
-        } else if (landmark.rating == 4.5) {
+        } else if landmark.rating == 4.5 {
             ratingImage.image = UIImage(named:"regular_4_half")
-        } else if (landmark.rating == 5) {
+        } else if landmark.rating == 5 {
             ratingImage.image = UIImage(named:"regular_5")
         }
     }
@@ -109,12 +112,12 @@ class LandmarkDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         let favorites = PersistenceManager.sharedInstance.fetchFavorites()
         for ele in favorites {
-            if (ele.address == landmark.address) {
+            if ele.address == landmark.address {
                 have = true
                 break
             }
         }
-        if (have != true) {
+        if have == false {
             favoriteButton.image = UIImage(named:"heart")
         } else {
             favoriteButton.image = UIImage(named:"heart_filled")

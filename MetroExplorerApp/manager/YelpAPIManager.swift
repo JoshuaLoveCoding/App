@@ -25,97 +25,97 @@ class YelpAPIManager {
     var delegate: FetchLandmarksDelegate?
     
     func fetchLandmarks(lat: Double, lon: Double) {
-        var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")!
-        
-        urlComponents.queryItems = [
-            URLQueryItem(name: "term", value: "landmarks"),
-            URLQueryItem(name: "latitude", value: "\(lat)"),
-            URLQueryItem(name: "longitude", value: "\(lon)"),
-            URLQueryItem(name: "radius", value: "2000")
-        ]
-        
-        let url = urlComponents.url!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        
-        request.addValue("Bearer ***", forHTTPHeaderField: "Authorization")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            //PUT CODE HERE TO RUN UPON COMPLETION
+        if var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search") {
             
-            guard let response = response as? HTTPURLResponse else {
-                
-                self.delegate?.landmarksNotFound(reason: .noResponse)
-                
-                return
-            }
+            urlComponents.queryItems = [
+                URLQueryItem(name: "term", value: "landmarks"),
+                URLQueryItem(name: "latitude", value: "\(lat)"),
+                URLQueryItem(name: "longitude", value: "\(lon)"),
+                URLQueryItem(name: "radius", value: "2000")
+            ]
             
-            guard response.statusCode == 200 else {
-                self.delegate?.landmarksNotFound(reason: .non200Response)
+            if let url = urlComponents.url {
                 
-                return
-            }
-            //HERE - response is NOT nil and IS 200
-            
-            guard let data = data else {
+                var request = URLRequest(url: url)
+                request.httpMethod = "GET"
                 
-                self.delegate?.landmarksNotFound(reason: .noData)
+                request.addValue("Bearer ***", forHTTPHeaderField: "Authorization")
                 
-                return
-            }
-            
-            //HERE - data is NOT nil
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let yelpResponse = try decoder.decode(YelpResponse.self, from: data)
-                
-                //HERE - decoding was successful
-                
-                var landmarks = [Landmark]()
-                
-                for landmark in yelpResponse.businesses {
-                    let name = landmark.name
-                    let rating = landmark.rating
-                    let latitude = landmark.coordinates.latitude
-                    let longitude = landmark.coordinates.longitude
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    //PUT CODE HERE TO RUN UPON COMPLETION
                     
-                    var image_url : String = ""
-                    
-                    if (landmark.imageUrl != nil) {
-                        image_url = landmark.imageUrl!
+                    guard let response = response as? HTTPURLResponse else {
+                        
+                        self.delegate?.landmarksNotFound(reason: .noResponse)
+                        
+                        return
                     }
                     
-                    var address : String = ""
+                    guard response.statusCode == 200 else {
+                        self.delegate?.landmarksNotFound(reason: .non200Response)
+                        
+                        return
+                    }
+                    //HERE - response is NOT nil and IS 200
                     
-                    if (landmark.location.address1 != nil && landmark.location.address1 != "") {
-                        address = "\(landmark.location.address1!), \(landmark.location.city)"
-                    } else {
-                        address = "\(landmark.location.city)"
+                    guard let data = data else {
+                        
+                        self.delegate?.landmarksNotFound(reason: .noData)
+                        
+                        return
                     }
                     
-                    let landmark = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
+                    //HERE - data is NOT nil
                     
-                    landmarks.append(landmark)
+                    let decoder = JSONDecoder()
+                    
+                    do {
+                        let yelpResponse = try decoder.decode(YelpResponse.self, from: data)
+                        
+                        //HERE - decoding was successful
+                        
+                        var landmarks = [Landmark]()
+                        
+                        for landmark in yelpResponse.businesses {
+                            let name = landmark.name
+                            let rating = landmark.rating
+                            let latitude = landmark.coordinates.latitude
+                            let longitude = landmark.coordinates.longitude
+                            
+                            var image_url : String = ""
+                            
+                            image_url = landmark.imageUrl ?? ""
+                            
+                            var address : String = ""
+                            
+                            if landmark.location.address1 != nil && landmark.location.address1 != "" {
+                                address = "\(landmark.location.address1 ?? ""), \(landmark.location.city)"
+                            } else {
+                                address = "\(landmark.location.city)"
+                            }
+                            
+                            let landmark = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
+                            
+                            landmarks.append(landmark)
+                        }
+                        
+                        //now what do we do with the landmarks????
+                        print(landmarks)
+                        
+                        self.delegate?.landmarksFound(landmarks)
+                        
+                        
+                    } catch let error {
+                        //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
+                        print(error.localizedDescription)
+                        
+                        self.delegate?.landmarksNotFound(reason: .badData)
+                    }
                 }
                 
-                //now what do we do with the landmarks????
-                print(landmarks)
-                
-                self.delegate?.landmarksFound(landmarks)
-                
-                
-            } catch let error {
-                //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs
-                print(error.localizedDescription)
-                
-                self.delegate?.landmarksNotFound(reason: .badData)
+                print("execute request")
+                task.resume()
             }
         }
-        
-        print("execute request")
-        task.resume()
     }
 }

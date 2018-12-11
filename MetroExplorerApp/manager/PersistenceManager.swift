@@ -20,13 +20,13 @@ class PersistenceManager {
         var have : Bool = false
         var int : Int = 0
         for ele in favorites {
-            if (ele.address == landmark.address) {
+            if ele.address == landmark.address {
                 have = true
                 break
             }
             int = int + 1
         }
-        if (have != true) {
+        if have == false {
             favorites.append(landmark)
         } else {
             favorites.remove(at: int)

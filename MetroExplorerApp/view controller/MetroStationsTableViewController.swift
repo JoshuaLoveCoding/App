@@ -50,47 +50,47 @@ class MetroStationsViewController: UITableViewController {
         cell.stationNameLabel.text = station.name
         cell.stationAddressLabel.text = station.address
         
-        if(station.lineCode1 == "RD") {
+        if station.lineCode1 == "RD" {
             cell.lineCodeImage1.image = UIImage(named:"red.png")
-        } else if (station.lineCode1 == "BL") {
+        } else if station.lineCode1 == "BL" {
             cell.lineCodeImage1.image = UIImage(named:"blue.png")
-        } else if (station.lineCode1 == "GR") {
+        } else if station.lineCode1 == "GR" {
             cell.lineCodeImage1.image = UIImage(named:"green.png")
-        } else if (station.lineCode1 == "SV") {
+        } else if station.lineCode1 == "SV" {
             cell.lineCodeImage1.image = UIImage(named:"grey.png")
-        } else if (station.lineCode1 == "YL") {
+        } else if station.lineCode1 == "YL" {
             cell.lineCodeImage1.image = UIImage(named:"yellow.png")
-        } else if (station.lineCode1 == "OR") {
+        } else if station.lineCode1 == "OR" {
             cell.lineCodeImage1.image = UIImage(named:"orange.png")
         }
         
-        if(station.lineCode2 == "RD") {
+        if station.lineCode2 == "RD" {
             cell.lineCodeImage2.image = UIImage(named:"red.png")
-        } else if (station.lineCode2 == "BL") {
+        } else if station.lineCode2 == "BL" {
             cell.lineCodeImage2.image = UIImage(named:"blue.png")
-        } else if (station.lineCode2 == "GR") {
+        } else if station.lineCode2 == "GR" {
             cell.lineCodeImage2.image = UIImage(named:"green.png")
-        } else if (station.lineCode2 == "SV") {
+        } else if station.lineCode2 == "SV" {
             cell.lineCodeImage2.image = UIImage(named:"grey.png")
-        } else if (station.lineCode2 == "YL") {
+        } else if station.lineCode2 == "YL" {
             cell.lineCodeImage2.image = UIImage(named:"yellow.png")
-        } else if (station.lineCode2 == "OR") {
+        } else if station.lineCode2 == "OR" {
             cell.lineCodeImage2.image = UIImage(named:"orange.png")
         } else {
             cell.lineCodeImage2.image = UIImage(named:"white.png")
         }
         
-        if(station.lineCode3 == "RD") {
+        if station.lineCode3 == "RD" {
             cell.lineCodeImage3.image = UIImage(named:"red.png")
-        } else if (station.lineCode3 == "BL") {
+        } else if station.lineCode3 == "BL" {
             cell.lineCodeImage3.image = UIImage(named:"blue.png")
-        } else if (station.lineCode3 == "GR") {
+        } else if station.lineCode3 == "GR" {
             cell.lineCodeImage3.image = UIImage(named:"green.png")
-        } else if (station.lineCode3 == "SV") {
+        } else if station.lineCode3 == "SV" {
             cell.lineCodeImage3.image = UIImage(named:"grey.png")
-        } else if (station.lineCode3 == "YL") {
+        } else if station.lineCode3 == "YL" {
             cell.lineCodeImage3.image = UIImage(named:"yellow.png")
-        } else if (station.lineCode3 == "OR") {
+        } else if station.lineCode3 == "OR" {
             cell.lineCodeImage3.image = UIImage(named:"orange.png")
         } else {
             cell.lineCodeImage3.image = UIImage(named:"white.png")
@@ -116,7 +116,7 @@ class MetroStationsViewController: UITableViewController {
 
 extension MetroStationsViewController: FetchStationsDelegate {
     func stationsFound(_ stations: [Station]) {
-        print("stations found - here they are in the controller!")
+        print("stations found - here they are in the controller.")
         DispatchQueue.main.async {
             self.stations = stations
             MBProgressHUD.hide(for: self.view, animated: true)

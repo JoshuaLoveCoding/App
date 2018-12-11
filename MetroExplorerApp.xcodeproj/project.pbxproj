@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318321AA46AE005AF950 /* LandmarksViewController.swift */; };
-		4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318521AA46DB005AF950 /* StationsTableViewController.swift */; };
+		4212318621AA46DB005AF950 /* MetroStationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4212318521AA46DB005AF950 /* MetroStationsTableViewController.swift */; };
 		4234AE1821AC569700D153BA /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */; };
 		429A98FE21B49A0A0048B1B4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429A98FD21B49A0A0048B1B4 /* Extensions.swift */; };
 		42AC473121AB6D370030FD29 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC473021AB6D370030FD29 /* PersistenceManager.swift */; };
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		4212318321AA46AE005AF950 /* LandmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarksViewController.swift; sourceTree = "<group>"; };
-		4212318521AA46DB005AF950 /* StationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationsTableViewController.swift; sourceTree = "<group>"; };
+		4212318521AA46DB005AF950 /* MetroStationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroStationsTableViewController.swift; sourceTree = "<group>"; };
 		4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
 		429A98FD21B49A0A0048B1B4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		42AC473021AB6D370030FD29 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 			children = (
 				42AD7D16219E438D00EB72CE /* MenuViewController.swift */,
 				4212318321AA46AE005AF950 /* LandmarksViewController.swift */,
-				4212318521AA46DB005AF950 /* StationsTableViewController.swift */,
+				4212318521AA46DB005AF950 /* MetroStationsTableViewController.swift */,
 				4234AE1721AC569700D153BA /* LandmarkDetailViewController.swift */,
 				42DA297F21B82EA400BDE267 /* NearestTableViewController.swift */,
 			);
@@ -283,7 +283,7 @@
 				42C8517C21B37E5C004A9C4B /* Landmark.swift in Sources */,
 				42AC473921AB6DAC0030FD29 /* YelpResponse.swift in Sources */,
 				42AC473321AB6D4D0030FD29 /* WMATAAPIManager.swift in Sources */,
-				4212318621AA46DB005AF950 /* StationsTableViewController.swift in Sources */,
+				4212318621AA46DB005AF950 /* MetroStationsTableViewController.swift in Sources */,
 				4212318421AA46AE005AF950 /* LandmarksViewController.swift in Sources */,
 				42AD7D17219E438D00EB72CE /* MenuViewController.swift in Sources */,
 				42DA298021B82EA400BDE267 /* NearestTableViewController.swift in Sources */,

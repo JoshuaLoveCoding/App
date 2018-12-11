@@ -12,7 +12,7 @@ class LandmarksTableViewCell: UITableViewCell {
     
     @IBOutlet weak var landmarkNameLabel: UILabel!
     @IBOutlet weak var landmarkAddressLabel: UILabel!
-    @IBOutlet weak var ratingImage: UIImageView!
+    @IBOutlet weak var landmarkImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

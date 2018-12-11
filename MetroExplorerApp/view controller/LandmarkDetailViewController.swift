@@ -36,7 +36,7 @@ class LandmarkDetailViewController: UIViewController {
         let latitude:CLLocationDegrees = landmark.latitude
         let longitude:CLLocationDegrees = landmark.longitude
         
-        let regionDistance:CLLocationDistance = 1000;
+        let regionDistance:CLLocationDistance = 1000
         let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
         let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
         

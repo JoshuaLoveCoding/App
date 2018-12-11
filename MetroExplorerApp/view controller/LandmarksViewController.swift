@@ -48,8 +48,12 @@ class LandmarksViewController: UITableViewController {
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 46
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count: Int = 0;
+        var count: Int = 0
         if (self.title == "Landmarks") {
             count = landmarks.count
         } else {
@@ -68,26 +72,13 @@ class LandmarksViewController: UITableViewController {
             cell.landmarkNameLabel.text = landmark.name
             cell.landmarkAddressLabel.text = landmark.address
             
-            if(landmark.rating == 0) {
-                cell.ratingImage.image = UIImage(named:"regular_0")
-            } else if (landmark.rating == 1) {
-                cell.ratingImage.image = UIImage(named:"regular_1")
-            } else if (landmark.rating == 1.5) {
-                cell.ratingImage.image = UIImage(named:"regular_1_half")
-            } else if (landmark.rating == 2) {
-                cell.ratingImage.image = UIImage(named:"regular_2")
-            } else if (landmark.rating == 2.5) {
-                cell.ratingImage.image = UIImage(named:"regular_2_half")
-            } else if (landmark.rating == 3) {
-                cell.ratingImage.image = UIImage(named:"regular_3")
-            } else if (landmark.rating == 3.5) {
-                cell.ratingImage.image = UIImage(named:"regular_3_half")
-            } else if (landmark.rating == 4) {
-                cell.ratingImage.image = UIImage(named:"regular_4")
-            } else if (landmark.rating == 4.5) {
-                cell.ratingImage.image = UIImage(named:"regular_4_half")
-            } else if (landmark.rating == 5) {
-                cell.ratingImage.image = UIImage(named:"regular_5")
+            var urlString:String = ""
+            urlString = landmark.image_url
+            let url = URL(string: urlString)
+            if (url != nil) {
+                cell.landmarkImage.load(url: url!)
+            } else {
+                cell.landmarkImage.image = UIImage(named: "no_image_available")
             }
             cellToReturn = cell
         } else {
@@ -98,26 +89,13 @@ class LandmarksViewController: UITableViewController {
             cell.favoriteNameLabel.text = favorite.name
             cell.favoriteAddressLabel.text = favorite.address
             
-            if(favorite.rating == 0) {
-                cell.ratingImage.image = UIImage(named:"regular_0")
-            } else if (favorite.rating == 1) {
-                cell.ratingImage.image = UIImage(named:"regular_1")
-            } else if (favorite.rating == 1.5) {
-                cell.ratingImage.image = UIImage(named:"regular_1_half")
-            } else if (favorite.rating == 2) {
-                cell.ratingImage.image = UIImage(named:"regular_2")
-            } else if (favorite.rating == 2.5) {
-                cell.ratingImage.image = UIImage(named:"regular_2_half")
-            } else if (favorite.rating == 3) {
-                cell.ratingImage.image = UIImage(named:"regular_3")
-            } else if (favorite.rating == 3.5) {
-                cell.ratingImage.image = UIImage(named:"regular_3_half")
-            } else if (favorite.rating == 4) {
-                cell.ratingImage.image = UIImage(named:"regular_4")
-            } else if (favorite.rating == 4.5) {
-                cell.ratingImage.image = UIImage(named:"regular_4_half")
-            } else if (favorite.rating == 5) {
-                cell.ratingImage.image = UIImage(named:"regular_5")
+            var urlString:String = ""
+            urlString = favorite.image_url
+            let url = URL(string: urlString)
+            if (url != nil) {
+                cell.favoriteImage.load(url: url!)
+            } else {
+                cell.favoriteImage.image = UIImage(named: "no_image_available")
             }
             cellToReturn = cell
         }

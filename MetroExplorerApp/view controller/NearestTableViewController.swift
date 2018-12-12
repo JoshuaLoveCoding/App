@@ -15,35 +15,35 @@ class NearestTableViewController: UITableViewController {
     var lat: Double = 0
     var lon: Double = 0
     let wmataAPIManager = WMATAAPIManager()
-    let locationDetector = LocationDetector()
+    let locationDetector = LocationDetector()//initialize location detector
     
     var stations = [Station]() {
         didSet {
             tableView.reloadData()
         }
-    }
+    }//reload the stations data
     
     var stationsNew = [Station]() {
         didSet {
             tableView.reloadData()
         }
-    }
+    }//reload the nearest station
     
     override func viewDidLoad() {
         super.viewDidLoad()
         wmataAPIManager.delegate = self
         locationDetector.delegate = self
-        fetchStation()
+        fetchStation()//fetch stations
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        appTimer.invalidate()
+        appTimer.invalidate()//terminate timer
     }
     
     private func fetchStation() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        locationDetector.findLocation()
+        MBProgressHUD.showAdded(to: self.view, animated: true)//animation appears
+        locationDetector.findLocation()//fetch location
     }
     
     // MARK: - Table view data source
@@ -53,11 +53,11 @@ class NearestTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 46
-    }
+    }//set the height of the cell
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stationsNew.count
-    }
+    }//count the number Of rows in the nearest station
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! StationsTableViewCell
@@ -65,7 +65,7 @@ class NearestTableViewController: UITableViewController {
         let station = stationsNew[indexPath.row]
         
         cell.stationNameLabel.text = station.name
-        cell.stationAddressLabel.text = station.address
+        cell.stationAddressLabel.text = station.address//set data in the view
         
         if station.lineCode1 == "RD" {
             cell.lineCodeImage1.image = UIImage(named:"red.png")
@@ -79,7 +79,7 @@ class NearestTableViewController: UITableViewController {
             cell.lineCodeImage1.image = UIImage(named:"yellow.png")
         } else if station.lineCode1 == "OR" {
             cell.lineCodeImage1.image = UIImage(named:"orange.png")
-        }
+        }//show colour of the line
         
         if station.lineCode2 == "RD" {
             cell.lineCodeImage2.image = UIImage(named:"red.png")
@@ -94,8 +94,8 @@ class NearestTableViewController: UITableViewController {
         } else if station.lineCode2 == "OR" {
             cell.lineCodeImage2.image = UIImage(named:"orange.png")
         } else {
-            cell.lineCodeImage2.image = UIImage(named:"white.png")
-        }
+            cell.lineCodeImage2.image = UIImage(named:"white.png")//handle line2 doesn't exist
+        }//show colour of the line
         
         if station.lineCode3 == "RD" {
             cell.lineCodeImage3.image = UIImage(named:"red.png")
@@ -110,8 +110,8 @@ class NearestTableViewController: UITableViewController {
         } else if station.lineCode3 == "OR" {
             cell.lineCodeImage3.image = UIImage(named:"orange.png")
         } else {
-            cell.lineCodeImage3.image = UIImage(named:"white.png")
-        }
+            cell.lineCodeImage3.image = UIImage(named:"white.png")//handle line3 doesn't exist
+        }//show colour of the line
         
         return cell
     }
@@ -119,7 +119,7 @@ class NearestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "segueNearest", sender: indexPath.row)
-    }
+    }//use segue to pass station data
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //pass the data to your next view controller
@@ -127,7 +127,7 @@ class NearestTableViewController: UITableViewController {
         let row = sender as! Int
         
         let vc = segue.destination as! LandmarksViewController
-        vc.station = stationsNew[row]
+        vc.station = stationsNew[row]//pass station data
     }
 }
 
@@ -135,25 +135,25 @@ extension NearestTableViewController: LocationDetectorDelegate {
     func locationDetected(latitude: Double, longitude: Double) {
         self.lat = latitude
         self.lon = longitude
-        wmataAPIManager.fetchStations()
+        wmataAPIManager.fetchStations()//call fetchStations function
     }
     
     func locationNotDetected() {
         print("no location found :(")
         DispatchQueue.main.async {
-            self.appTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)
+            self.appTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.runTimedCode), userInfo: nil, repeats: false)//set 10 seconds (timeout)
             //Show a AlertController with error
         }
     }
     @objc func runTimedCode() {
         
-        MBProgressHUD.hide(for: self.view, animated: true)
+        MBProgressHUD.hide(for: self.view, animated: true)//hide animation
         
         let alertController = UIAlertController(title: "Problem getting location", message: "Failed to get location to find nearest station.", preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
-        alertController.addAction(okayAction)
+        alertController.addAction(okayAction)//ok button
         
-        self.present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)//show alert
     }
 }
 
@@ -162,25 +162,25 @@ extension NearestTableViewController: FetchStationsDelegate {
         print("stations found - here they are in the controller.")
         DispatchQueue.main.async {
             self.stations = stations
-            var dis: Double = 999999999
-            var sta = Station(name: "", address: "", lineCode1: "", lineCode2: "", lineCode3: "", lat: -1, lon: -1)
+            var dis: Double = 999999999//set Max distance
+            var sta = Station(name: "", address: "", lineCode1: "", lineCode2: "", lineCode3: "", lat: -1, lon: -1)//initialize the station
             for ele in stations {
                 let len: Double = CLLocation(latitude: ele.lat, longitude: ele.lon).distance(from: CLLocation(latitude: self.lat, longitude: self.lon))
                 if len < dis {
                     dis = len
                     sta = ele
                 }
-            }
+            }//calculate the nearest station
             if self.stationsNew.count == 0 {
-                self.stationsNew.append(sta)
+                self.stationsNew.append(sta)//add the nearest station to the list to show
             }
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)//hide animation
         }
     }
     
     func stationsNotFound(reason: WMATAAPIManager.FailureReason) {
         DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)//hide animation
             
             let alertController = UIAlertController(title: "Problem fetching stations", message: reason.rawValue, preferredStyle: .alert)
             
@@ -188,9 +188,9 @@ extension NearestTableViewController: FetchStationsDelegate {
             case .noResponse:
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
                     self.fetchStation()
-                })
+                })//retry button to call function again
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)//cancel button
                 
                 alertController.addAction(cancelAction)
                 alertController.addAction(retryAction)
@@ -199,9 +199,9 @@ extension NearestTableViewController: FetchStationsDelegate {
                 let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
                 
                 alertController.addAction(okayAction)
-            }
+            }//ok button
             
-            self.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)//show alert
         }
     }
 }

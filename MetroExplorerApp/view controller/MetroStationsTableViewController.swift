@@ -16,17 +16,17 @@ class MetroStationsViewController: UITableViewController {
         didSet {
             tableView.reloadData()
         }
-    }
+    }//reload the stations data
     
     override func viewDidLoad() {
         super.viewDidLoad()
         wmataAPIManager.delegate = self
-        fetchStation()
+        fetchStation()//fetch stations
     }
     
     private func fetchStation() {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        wmataAPIManager.fetchStations()
+        MBProgressHUD.showAdded(to: self.view, animated: true)//animation appears
+        wmataAPIManager.fetchStations()//fetch stations
     }
     
     // MARK: - Table view data source
@@ -36,11 +36,11 @@ class MetroStationsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 46
-    }
+    }//set the height of the cell
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stations.count
-    }
+    }//count the number Of rows in stations
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell", for: indexPath) as! StationsTableViewCell
@@ -48,7 +48,7 @@ class MetroStationsViewController: UITableViewController {
         let station = stations[indexPath.row]
         
         cell.stationNameLabel.text = station.name
-        cell.stationAddressLabel.text = station.address
+        cell.stationAddressLabel.text = station.address//set data in the view
         
         if station.lineCode1 == "RD" {
             cell.lineCodeImage1.image = UIImage(named:"red.png")
@@ -62,7 +62,7 @@ class MetroStationsViewController: UITableViewController {
             cell.lineCodeImage1.image = UIImage(named:"yellow.png")
         } else if station.lineCode1 == "OR" {
             cell.lineCodeImage1.image = UIImage(named:"orange.png")
-        }
+        }//show colour of the line
         
         if station.lineCode2 == "RD" {
             cell.lineCodeImage2.image = UIImage(named:"red.png")
@@ -77,8 +77,8 @@ class MetroStationsViewController: UITableViewController {
         } else if station.lineCode2 == "OR" {
             cell.lineCodeImage2.image = UIImage(named:"orange.png")
         } else {
-            cell.lineCodeImage2.image = UIImage(named:"white.png")
-        }
+            cell.lineCodeImage2.image = UIImage(named:"white.png")//handle line2 doesn't exist
+        }//show colour of the line
         
         if station.lineCode3 == "RD" {
             cell.lineCodeImage3.image = UIImage(named:"red.png")
@@ -93,8 +93,8 @@ class MetroStationsViewController: UITableViewController {
         } else if station.lineCode3 == "OR" {
             cell.lineCodeImage3.image = UIImage(named:"orange.png")
         } else {
-            cell.lineCodeImage3.image = UIImage(named:"white.png")
-        }
+            cell.lineCodeImage3.image = UIImage(named:"white.png")//handle line3 doesn't exist
+        }//show colour of the line
         
         return cell
     }
@@ -102,7 +102,7 @@ class MetroStationsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "segueStation", sender: indexPath.row)
-    }
+    }//use segue to pass station data
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //pass the data to your next view controller
@@ -110,7 +110,7 @@ class MetroStationsViewController: UITableViewController {
         let row = sender as! Int
         
         let vc = segue.destination as! LandmarksViewController
-        vc.station = stations[row]
+        vc.station = stations[row]//pass stations data
     }
 }
 
@@ -119,22 +119,22 @@ extension MetroStationsViewController: FetchStationsDelegate {
         print("stations found - here they are in the controller.")
         DispatchQueue.main.async {
             self.stations = stations
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)//hide animation
         }
     }
     
     func stationsNotFound(reason: WMATAAPIManager.FailureReason) {
         DispatchQueue.main.async {
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: self.view, animated: true)//hide animation
             let alertController = UIAlertController(title: "Problem fetching stations", message: reason.rawValue, preferredStyle: .alert)
             
             switch(reason) {
             case .noResponse:
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
                     self.fetchStation()
-                })
+                })//retry button to call function again
                 
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)//cancel button
                 
                 alertController.addAction(cancelAction)
                 alertController.addAction(retryAction)
@@ -143,9 +143,9 @@ extension MetroStationsViewController: FetchStationsDelegate {
                 let okayAction = UIAlertAction(title: "OK", style: .default, handler:nil)
                 
                 alertController.addAction(okayAction)
-            }
+            }//ok button
             
-            self.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)//show alert
         }
     }
 }

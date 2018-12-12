@@ -31,15 +31,15 @@ class YelpAPIManager {
                 URLQueryItem(name: "term", value: "landmarks"),
                 URLQueryItem(name: "latitude", value: "\(lat)"),
                 URLQueryItem(name: "longitude", value: "\(lon)"),
-                URLQueryItem(name: "radius", value: "2000")
-            ]
+                URLQueryItem(name: "radius", value: "2000")//set radius to 2000 meters
+            ]//set the parameters of url
             
             if let url = urlComponents.url {
                 
                 var request = URLRequest(url: url)
-                request.httpMethod = "GET"
+                request.httpMethod = "GET"//set request method
                 
-                request.addValue("Bearer ***", forHTTPHeaderField: "Authorization")
+                request.addValue("Bearer ***", forHTTPHeaderField: "Authorization")//set the header
                 
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     //PUT CODE HERE TO RUN UPON COMPLETION
@@ -84,7 +84,7 @@ class YelpAPIManager {
                             
                             var image_url : String = ""
                             
-                            image_url = landmark.imageUrl ?? ""
+                            image_url = landmark.imageUrl ?? ""//handling landmark where there may be no url
                             
                             var address : String = ""
                             
@@ -92,18 +92,17 @@ class YelpAPIManager {
                                 address = "\(landmark.location.address1 ?? ""), \(landmark.location.city)"
                             } else {
                                 address = "\(landmark.location.city)"
-                            }
+                            }//handling situations where there may be no address1
                             
                             let landmark = Landmark(name: name, address: address, image_url: image_url, rating: rating, latitude: latitude, longitude: longitude)
                             
-                            landmarks.append(landmark)
+                            landmarks.append(landmark)//append landmark to list
                         }
                         
-                        //now what do we do with the landmarks????
+                        //now we can see the list of stations
                         print(landmarks)
                         
                         self.delegate?.landmarksFound(landmarks)
-                        
                         
                     } catch let error {
                         //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs

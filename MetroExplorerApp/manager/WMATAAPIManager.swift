@@ -29,12 +29,12 @@ class WMATAAPIManager {
             
             urlComponents.queryItems = [
                 URLQueryItem(name: "api_key", value: "***")
-            ]
+            ]//set the parameters of url
             
             if let url = urlComponents.url {
                 
                 var request = URLRequest(url: url)
-                request.httpMethod = "GET"
+                request.httpMethod = "GET"//set request method
                 
                 let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                     //PUT CODE HERE TO RUN UPON COMPLETION
@@ -80,22 +80,21 @@ class WMATAAPIManager {
                             
                             var lineCode2 : String = ""
                             
-                            lineCode2 = station.LineCode2 ?? ""
+                            lineCode2 = station.LineCode2 ?? ""//handling situations where there may be no LineCode2
                             
                             var lineCode3 : String = ""
                             
-                            lineCode3 = station.LineCode3 ?? ""
+                            lineCode3 = station.LineCode3 ?? ""//handling situations where there may be no LineCode3
                             
                             let station = Station(name: station.Name, address: address, lineCode1: station.LineCode1, lineCode2: lineCode2, lineCode3: lineCode3, lat: station.Lat, lon: station.Lon)
                             
-                            stations.append(station)
+                            stations.append(station)//append station to list
                         }
                         
-                        //now what do we do with the stations????
+                        //now we can see the list of stations
                         print(stations)
                         
                         self.delegate?.stationsFound(stations)
-                        
                         
                     } catch let error {
                         //if we get here, need to set a breakpoint and inspect the error to see where there is a mismatch between JSON and our Codable model structs

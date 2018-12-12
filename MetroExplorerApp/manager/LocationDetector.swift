@@ -24,20 +24,20 @@ class LocationDetector: NSObject {
     }
     
     func findLocation() {
-        let permissionStatus = CLLocationManager.authorizationStatus()
+        let permissionStatus = CLLocationManager.authorizationStatus()//ask for authorization
         
         switch(permissionStatus) {
             
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()//users are not determined
         case .restricted:
-            delegate?.locationNotDetected()
+            delegate?.locationNotDetected()//users restrict
         case .denied:
-            delegate?.locationNotDetected()
+            delegate?.locationNotDetected()//users always allow to detect
         case .authorizedAlways:
             break
         case .authorizedWhenInUse:
-            locationManager.requestLocation()
+            locationManager.requestLocation()//users allow when app is in use
         }
     }
 }
